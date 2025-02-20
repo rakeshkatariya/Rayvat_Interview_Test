@@ -1,0 +1,82 @@
+/* App.css */
+
+.card-header {
+  padding: 20px;
+}
+
+.card-title {
+  margin-bottom: 20px;
+}
+
+.searchbar-area {
+  position: relative;
+}
+
+.searchbar-area .icon-search {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.card-actions {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.add-btn {
+  width: 150px;
+}
+
+/* Styling for the buttons */
+.p-button {
+  background-color: #007bff; /* Change to your preferred button color */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling for the icons */
+.pi {
+  font-size: 1rem;
+}
+
+/* Styling for the action body buttons */
+.table-icon .p-button {
+  margin-right: 5px; /* Adjust margin as needed */
+}
+
+.dialog-popup {
+  width: 300px;
+}
+
+.dialog-popup .p-dialog-content {
+  padding: 20px;
+}
+
+.dialog-popup .p-dialog-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-dialog-cancel {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-dialog-delete {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
