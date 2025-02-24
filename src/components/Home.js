@@ -1,38 +1,51 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cartSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/ProductSlice";
+import { addToCart } from "../redux/cartSlice"; 
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
-
+  const { items, status, error } = useSelector((state) => state.products);
+  
   useEffect(() => {
-    axios.get("https://dummyjson.com/products").then(res => setProducts(res.data.products));
-  }, []);
+    dispatch(fetchProducts()); 
+  }, [dispatch]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "failed") {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="container mt-4">
       <h2>Products</h2>
       <div className="row">
-        {products.map(product => (
+        {items.map((product) => (
           <div className="col-md-4" key={product.id}>
-
             <div className="card">
-              <img src={product.thumbnail} className="card-img-top" alt={product.title} />
-
+              <img
+                src={product.thumbnail}
+                className="card-img-top"
+                alt={product.title}
+              />
               <div className="card-body">
                 <h5>{product.title}</h5>
                 <p>${product.price}</p>
-
-                <button className="btn btn-primary" onClick={() => dispatch(addToCart(product))}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleAddToCart(product)}
+                >
                   Add to Cart
                 </button>
-                
               </div>
-
             </div>
-
           </div>
         ))}
       </div>
@@ -41,4 +54,3 @@ const Home = () => {
 };
 
 export default Home;
-
